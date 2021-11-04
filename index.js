@@ -17,27 +17,29 @@ app.get('/', (req, res) => {
             const html = response.data
             const $ = cheerio.load(html)
 
-            $('li.border-t.border-gray-200', html).each(function () {
-                const name = $(this).find('.text-sm.leading-5.font-medium.text-black.truncate').text()
-                    .replace(/\n/g, '')
-                    .replace(/\t/g, '')
-                    .replace(/\s+/g, ' ')
-                const desc = $(this).find('span.truncate').text()
-                const image = $(this).find('img.h-10.w-10.rounded-md.object-center').attr('src')
-                const totalDownload = $(this).find('.hidden.sm\\:block').text()
-                    .replace(/\n/g, '')
-                    .replace(/\t/g, '')
-                    .replace(/\s+/g, ' ')
-                const url = $(this).find('a.group.block.hover\\:bg-purple-darkest.focus\\:outline-none.transition.duration-150.ease-in-out').attr('href')
+            $('li.border-t.border-gray-200', html).each(function (parentIdx, parentElem) {
+                if(parentIdx <= 13) {
+                    const name = $(this).find('.text-sm.leading-5.font-medium.text-black.truncate').text()
+                        .replace(/\n/g, '')
+                        .replace(/\t/g, '')
+                        .replace(/\s+/g, ' ')
+                    const desc = $(this).find('span.truncate').text()
+                    const image = $(this).find('img.h-10.w-10.rounded-md.object-center').attr('src')
+                    const totalDownload = $(this).find('.hidden.sm\\:block').text()
+                        .replace(/\n/g, '')
+                        .replace(/\t/g, '')
+                        .replace(/\s+/g, ' ')
+                    const url = $(this).find('a.group.block.hover\\:bg-purple-darkest.focus\\:outline-none.transition.duration-150.ease-in-out').attr('href')
 
-                extensions.push({
-                    name,
-                    desc,
-                    totalDownload,
-                    image,
-                    url
+                    extensions.push({
+                        name,
+                        desc,
+                        totalDownload,
+                        image,
+                        url
 
-                })
+                    })
+                }
             })
             res.json(extensions)
         }).catch((err) => console.log(err))

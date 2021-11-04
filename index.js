@@ -65,6 +65,7 @@ app.get('/premium', (req, res) => {
                     .replace(/\n/g, '')
                     .replace(/\t/g, '')
                     .replace(/\s+/g, ' ')
+                    .slice(0,-15)
                 const url = $(this).find('a.group.block.hover\\:bg-purple-darkest.focus\\:outline-none.transition.duration-150.ease-in-out').attr('href')
                 const subscribers = $(this).find('.mt-2.flex.items-center.text-sm.leading-5').first().text()
                     .replace(/\n/g, '')

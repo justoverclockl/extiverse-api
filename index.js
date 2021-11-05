@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
             const $ = cheerio.load(html)
 
             $('.flex.items-center.px-4.py-4.sm\\:px-6', html).each(function (parentIdx, parentElem) {
+                if (parentIdx < 15) {
 
                     const name = $(this).find('.text-sm.leading-5.font-medium.text-black.truncate').text()
                         .replace(/\n/g, '')
@@ -39,7 +40,7 @@ app.get('/', (req, res) => {
                         url
 
                     })
-
+                }
             })
             res.json(extensions)
         }).catch((err) => console.log(err))

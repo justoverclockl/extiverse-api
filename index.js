@@ -30,15 +30,12 @@ app.get('/', (req, res) => {
                         .replace(/\n/g, '')
                         .replace(/\t/g, '')
                         .replace(/\s+/g, ' ')
-                    const url = $(this).find('a.group.block.hover\\:bg-purple-darkest.focus\\:outline-none.transition.duration-150.ease-in-out').attr('href')
 
                     extensions.push({
                         name,
                         desc,
                         totalDownload,
                         image,
-                        url
-
                     })
                 }
             })

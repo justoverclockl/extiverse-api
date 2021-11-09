@@ -87,4 +87,4 @@ app.get('/premium', (req, res) => {
 })
 
 
-app.listen(PORT, () => console.log(`Server avviato ed in ascolto sulla PORTA ${PORT}`))
+app.listen(PORT, () => console.log(`Server avviato sulla PORTA ${PORT}`))
